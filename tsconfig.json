@@ -2,7 +2,7 @@
   "extends": "@softwareventures/tsconfig/commonjs",
   "compilerOptions": {
     "lib": ["ES2018"],
-    "types": []
+    "types": ["node"]
   },
   "exclude": ["**/*.test.ts", "**/test.ts"]
 }
