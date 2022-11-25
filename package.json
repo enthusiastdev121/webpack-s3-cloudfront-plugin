@@ -1,0 +1,82 @@
+{
+  "private": true,
+  "name": "webpack-s3-cloudfront-plugin",
+  "version": "0.0.0-development",
+  "description": "Webpack plugin to deploy apps to AWS S3 and CloudFront",
+  "keywords": [
+    "aws",
+    "cloudfront",
+    "s3",
+    "webpack"
+  ],
+  "author": "Daniel Cassidy <mail@danielcassidy.me.uk>",
+  "homepage": "https://github.com/softwareventures/webpack-s3-cloudfront-plugin",
+  "bugs": "https://github.com/softwareventures/webpack-s3-cloudfront-plugin/issues",
+  "repository": "github:softwareventures/webpack-s3-cloudfront-plugin",
+  "license": "ISC",
+  "scripts": {
+    "commit": "cz",
+    "fix": "tsc --noEmit && eslint . --fix && prettier --write .",
+    "postinstall": "husky install",
+    "lint": "tsc --noEmit && eslint . && prettier --check .",
+    "prepack": "tsc && pinst --disable",
+    "postpack": "pinst --enable",
+    "test": "ava"
+  },
+  "engines": {
+    "node": "^14 || ^16 || ^18 || >=19"
+  },
+  "dependencies": {
+    "tslib": "2.4.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.1.2",
+    "@commitlint/config-conventional": "17.1.0",
+    "@commitlint/cz-commitlint": "17.1.2",
+    "@softwareventures/eslint-config": "7.0.1",
+    "@softwareventures/precise-commits": "3.0.1",
+    "@softwareventures/prettier-config": "3.0.0",
+    "@softwareventures/semantic-release-config": "3.0.0",
+    "@softwareventures/tsconfig": "7.0.0",
+    "@types/node": "17.0.45",
+    "@typescript-eslint/eslint-plugin": "5.40.0",
+    "@typescript-eslint/parser": "5.40.0",
+    "ava": "4.3.3",
+    "commitizen": "4.2.5",
+    "eslint": "8.25.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsdoc": "39.3.6",
+    "eslint-plugin-prefer-arrow": "1.2.3",
+    "eslint-plugin-sonarjs": "0.16.0",
+    "husky": "8.0.1",
+    "inquirer": "8.2.4",
+    "pinst": "3.0.0",
+    "prettier": "2.7.1",
+    "semantic-release": "17.4.7",
+    "ts-node": "10.9.1",
+    "typescript": "4.8.4"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "@softwareventures"
+  },
+  "prettier": "@softwareventures/prettier-config",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/@commitlint/cz-commitlint"
+    }
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register/files"
+    ]
+  },
+  "release": {
+    "extends": "@softwareventures/semantic-release-config"
+  },
+  "packageManager": "yarn@3.3.0"
+}

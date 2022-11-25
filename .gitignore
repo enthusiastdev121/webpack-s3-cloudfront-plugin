@@ -1,0 +1,52 @@
+# Build output
+/node_modules
+package-lock.json
+yarn-error.log
+npm-debug.log*
+*.js
+*.d.ts
+*.js.map
+!/types/*.d.ts
+
+# Yarn 2
+/node_modules
+/.pnp.*
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+!/.yarn/versions
+yarn-error.log
+
+# In case someone runs npm by accident
+package-lock.json
+npm-debug.log*
+
+# Personal WebStorm IDE files
+/.idea/workspace.xml
+/.idea/tasks.xml
+/.idea/shelf
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

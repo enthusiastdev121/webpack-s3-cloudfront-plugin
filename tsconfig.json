@@ -1,0 +1,7 @@
+{
+  "extends": "@softwareventures/tsconfig/commonjs",
+  "compilerOptions": {
+    "types": []
+  },
+  "exclude": ["**/*.test.ts", "**/test.ts"]
+}
