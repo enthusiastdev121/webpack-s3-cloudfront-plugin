@@ -1,6 +1,7 @@
 {
   "extends": "@softwareventures/tsconfig/commonjs",
   "compilerOptions": {
+    "lib": ["ES2018"],
     "types": []
   },
   "exclude": ["**/*.test.ts", "**/test.ts"]
