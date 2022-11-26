@@ -2086,7 +2086,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@softwareventures/iterable@npm:^1.1.2 || ^2.0.0 || ^3.0.0":
+"@softwareventures/iterable@npm:^1.1.2 || ^2.0.0 || ^3.0.0, @softwareventures/iterable@npm:^3.2.0":
   version: 3.2.0
   resolution: "@softwareventures/iterable@npm:3.2.0"
   dependencies:
@@ -9285,6 +9285,7 @@ __metadata:
     "@softwareventures/async-iterable": ^1.2.0
     "@softwareventures/chain": ^2.0.2
     "@softwareventures/eslint-config": 7.0.1
+    "@softwareventures/iterable": ^3.2.0
     "@softwareventures/nullable": ^3.1.0
     "@softwareventures/precise-commits": 3.0.1
     "@softwareventures/prettier-config": 3.0.0

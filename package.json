@@ -30,6 +30,7 @@
     "@aws-sdk/client-s3": "^3.216.0",
     "@softwareventures/async-iterable": "^1.2.0",
     "@softwareventures/chain": "^2.0.2",
+    "@softwareventures/iterable": "^3.2.0",
     "@softwareventures/nullable": "^3.1.0",
     "@softwareventures/timestamp": "^1.1.0",
     "tslib": "2.4.0"
