@@ -5,6 +5,7 @@ import {notNull} from "@softwareventures/nullable";
 import type {Timestamp} from "@softwareventures/timestamp";
 import {fromJsDate} from "@softwareventures/timestamp";
 import {chain} from "@softwareventures/chain";
+import {sendCommand} from "./send-command";
 
 export interface ListObjectsOptions {
     readonly client: S3Client;
@@ -38,24 +39,20 @@ function listObjectsInternal(
     options: ListObjectsInternalOptions
 ): AsyncIterable<ListObjectsEntry | ListObjectsError> {
     return chain([
-        options.client
-            .send(
-                new ListObjectsV2Command({
-                    Bucket: options.bucket,
-                    ...(options.prefix == null ? {} : {Prefix: options.prefix}),
-                    ...(options.continuationToken == null
-                        ? {}
-                        : {ContinuationToken: options.continuationToken})
-                })
-            )
-            .then(
-                output => ({type: "ListObjectsOutput", output} as const),
-                (error: unknown) => ({type: "ListObjectsError", error} as const)
-            )
+        sendCommand({
+            client: options.client,
+            command: new ListObjectsV2Command({
+                Bucket: options.bucket,
+                ...(options.prefix == null ? {} : {Prefix: options.prefix}),
+                ...(options.continuationToken == null
+                    ? {}
+                    : {ContinuationToken: options.continuationToken})
+            })
+        })
     ]).map(
         asyncConcatMapFn(result =>
-            result.type === "ListObjectsError"
-                ? [result]
+            result.type === "SendCommandError"
+                ? [{type: "ListObjectsError", error: result.error} as const]
                 : result.output.NextContinuationToken == null
                 ? extractEntries(result.output)
                 : concat([
