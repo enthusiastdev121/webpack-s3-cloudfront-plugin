@@ -14,6 +14,13 @@ export function listObjectsWithAttributes(
                   client: options.client,
                   bucket: options.bucket,
                   key: entry.key
-              })
+              }).then(attributes =>
+                  attributes.type === "NotFound"
+                      ? {
+                            type: "ListObjectsError",
+                            error: new Error("NotFound error when fetching object attributes")
+                        }
+                      : attributes
+              )
     );
 }

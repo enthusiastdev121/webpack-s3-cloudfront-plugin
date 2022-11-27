@@ -6,6 +6,8 @@ import {
 import type {Timestamp} from "@softwareventures/timestamp";
 import {fromJsDate} from "@softwareventures/timestamp";
 import {notNull} from "@softwareventures/nullable";
+import type {NotFound} from "./not-found";
+import {sendCommand} from "./send-command";
 
 export interface FetchObjectAttributesOptions {
     readonly client: S3Client;
@@ -28,23 +30,27 @@ export interface FetchObjectAttributesError {
 
 export async function fetchObjectAttributes(
     options: FetchObjectAttributesOptions
-): Promise<ObjectAttributes | FetchObjectAttributesError> {
-    return options.client
-        .send(
-            new GetObjectAttributesCommand({
-                Bucket: options.bucket,
-                Key: options.key,
-                ObjectAttributes: [S3ObjectAttributes.CHECKSUM, S3ObjectAttributes.OBJECT_SIZE]
-            })
-        )
-        .then(
-            output => ({
-                type: "ObjectAttributes",
-                key: options.key,
-                sizeBytes: notNull(output.ObjectSize),
-                lastModified: fromJsDate(notNull(output.LastModified)),
-                sha256: output.Checksum?.ChecksumSHA256
-            }),
-            (error: unknown) => ({type: "FetchObjectAttributesError", error} as const)
-        );
+): Promise<ObjectAttributes | NotFound | FetchObjectAttributesError> {
+    return sendCommand({
+        client: options.client,
+        command: new GetObjectAttributesCommand({
+            Bucket: options.bucket,
+            Key: options.key,
+            ObjectAttributes: [S3ObjectAttributes.CHECKSUM, S3ObjectAttributes.OBJECT_SIZE]
+        })
+    }).then(
+        output =>
+            output.type === "NotFound"
+                ? output
+                : output.type === "SendCommandError"
+                ? {type: "FetchObjectAttributesError", error: output.error}
+                : {
+                      type: "ObjectAttributes",
+                      key: options.key,
+                      sizeBytes: notNull(output.output.ObjectSize),
+                      lastModified: fromJsDate(notNull(output.output.LastModified)),
+                      sha256: output.output.Checksum?.ChecksumSHA256
+                  },
+        (error: unknown) => ({type: "FetchObjectAttributesError", error} as const)
+    );
 }
