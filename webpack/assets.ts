@@ -4,6 +4,7 @@ import {chain} from "@softwareventures/chain";
 import {notNull} from "@softwareventures/nullable";
 
 export interface Asset {
+    readonly key: string;
     readonly immutable: boolean;
     readonly buffer: () => Buffer;
 }
@@ -23,6 +24,7 @@ export function collectAssets(compilation: Compilation): Map<string, Asset> {
                     [
                         key,
                         {
+                            key,
                             buffer: () => asset.buffer(),
                             immutable: info.immutable ?? false
                         }
