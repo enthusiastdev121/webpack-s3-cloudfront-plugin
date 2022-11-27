@@ -3,8 +3,6 @@ import type {ServiceInputTypes, ServiceOutputTypes} from "@aws-sdk/client-s3/dis
 import type {Command} from "@aws-sdk/types";
 import type {SmithyResolvedConfiguration} from "@aws-sdk/smithy-client/dist-types/client";
 import type {HttpHandlerOptions} from "@aws-sdk/types/dist-types/http";
-import type {NotFound} from "./not-found";
-import {notFound} from "./not-found";
 
 export interface SendCommandOptions<
     TInput extends ServiceInputTypes,
@@ -27,6 +25,7 @@ export interface SendCommandOutput<T extends ServiceOutputTypes> {
 
 export interface SendCommandError {
     readonly type: "SendCommandError";
+    readonly httpStatusCode?: number;
     readonly error: unknown;
 }
 
@@ -35,7 +34,7 @@ export async function sendCommand<
     TOutput extends ServiceOutputTypes
 >(
     options: SendCommandOptions<TInput, TOutput>
-): Promise<SendCommandOutput<TOutput> | NotFound | SendCommandError> {
+): Promise<SendCommandOutput<TOutput> | SendCommandError> {
     return options.client.send(options.command).then(
         output => {
             if (
@@ -43,11 +42,10 @@ export async function sendCommand<
                 output.$metadata.httpStatusCode === 200
             ) {
                 return {type: "SendCommandOutput", output};
-            } else if (output.$metadata.httpStatusCode === 404) {
-                return notFound();
             } else {
                 return {
                     type: "SendCommandError",
+                    httpStatusCode: output.$metadata.httpStatusCode,
                     error: new Error(`HTTP ${output.$metadata.httpStatusCode}`)
                 };
             }

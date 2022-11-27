@@ -8,6 +8,7 @@ import {fromJsDate} from "@softwareventures/timestamp";
 import {notNull} from "@softwareventures/nullable";
 import type {NotFound} from "./not-found";
 import {sendCommand} from "./send-command";
+import {notFound} from "./not-found";
 
 export interface FetchObjectAttributesOptions {
     readonly client: S3Client;
@@ -38,19 +39,17 @@ export async function fetchObjectAttributes(
             Key: options.key,
             ObjectAttributes: [S3ObjectAttributes.CHECKSUM, S3ObjectAttributes.OBJECT_SIZE]
         })
-    }).then(
-        output =>
-            output.type === "NotFound"
-                ? output
-                : output.type === "SendCommandError"
-                ? {type: "FetchObjectAttributesError", error: output.error}
-                : {
-                      type: "ObjectAttributes",
-                      key: options.key,
-                      sizeBytes: notNull(output.output.ObjectSize),
-                      lastModified: fromJsDate(notNull(output.output.LastModified)),
-                      sha256: output.output.Checksum?.ChecksumSHA256
-                  },
-        (error: unknown) => ({type: "FetchObjectAttributesError", error} as const)
+    }).then(output =>
+        output.type === "SendCommandOutput"
+            ? {
+                  type: "ObjectAttributes",
+                  key: options.key,
+                  sizeBytes: notNull(output.output.ObjectSize),
+                  lastModified: fromJsDate(notNull(output.output.LastModified)),
+                  sha256: output.output.Checksum?.ChecksumSHA256
+              }
+            : output.httpStatusCode === 404
+            ? notFound()
+            : {type: "FetchObjectAttributesError", error: output.error}
     );
 }
