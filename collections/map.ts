@@ -15,6 +15,10 @@ export function entries<TKey, TValue>(
     }
 }
 
+export function mapOf<TKey, TValue>(map: MapLike<TKey, TValue>): Map<TKey, TValue> {
+    return new Map(entries(map));
+}
+
 export function mapValues<TKey, TValue, TNewValue>(
     map: Iterable<readonly [TKey, TValue]>,
     f: (value: TValue, key: TKey) => TNewValue
