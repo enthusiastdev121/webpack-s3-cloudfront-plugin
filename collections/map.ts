@@ -1,4 +1,19 @@
 import {map as mapIterable} from "@softwareventures/iterable";
+import {hasProperty} from "unknown";
+
+export type MapLike<TKey, TValue> =
+    | Iterable<readonly [TKey, TValue]>
+    | (TKey extends string ? Readonly<Record<TKey, TValue>> : never);
+
+export function entries<TKey, TValue>(
+    map: MapLike<TKey, TValue>
+): Iterable<readonly [TKey, TValue]> {
+    if (hasProperty(map, Symbol.iterator)) {
+        return map;
+    } else {
+        return Object.entries(map) as unknown as ReadonlyArray<[TKey, TValue]>;
+    }
+}
 
 export function mapValues<TKey, TValue, TNewValue>(
     map: Iterable<readonly [TKey, TValue]>,
