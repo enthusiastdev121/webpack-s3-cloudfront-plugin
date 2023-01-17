@@ -2188,23 +2188,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@softwareventures/timestamp@npm:^1.0.0":
-  version: 1.0.6
-  resolution: "@softwareventures/timestamp@npm:1.0.6"
-  dependencies:
-    "@softwareventures/date": ^1.4.2 || ^2.0.0 || ^3.0.0
-    "@softwareventures/format-timestamp": ^1.0.0
-    "@softwareventures/iterable": ^1.1.2 || ^2.0.0 || ^3.0.0
-    "@softwareventures/nullable": ^1.3.1 || ^2.0.0 || ^3.0.0
-    "@softwareventures/ordered": ^0.2.2 || ^1.0.0 || ^2.0.0
-    "@softwareventures/time": ^1.0.0 || ^2.0.0
-    tslib: 2.4.1
-    unknown: ^0.2.5
-  checksum: 98ab5de76ffaa5d52f46bde23fec734d1998229e6ed5cc95f2648dbee69a02550a3751ccc20f4481aa5ab9305bf1438bab497539aa88d0100c113778176cef70
-  languageName: node
-  linkType: hard
-
-"@softwareventures/timestamp@npm:^1.1.0":
+"@softwareventures/timestamp@npm:^1.0.0, @softwareventures/timestamp@npm:^1.1.0":
   version: 1.1.0
   resolution: "@softwareventures/timestamp@npm:1.1.0"
   dependencies:
@@ -9311,7 +9295,7 @@ __metadata:
     ts-node: 10.9.1
     tslib: 2.4.0
     typescript: 4.8.4
-    webpack: ^5.75.0
+    webpack: 5.75.0
   peerDependencies:
     webpack: ^5.0.0
   languageName: unknown
@@ -9324,7 +9308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.75.0":
+"webpack@npm:5.75.0":
   version: 5.75.0
   resolution: "webpack@npm:5.75.0"
   dependencies:
