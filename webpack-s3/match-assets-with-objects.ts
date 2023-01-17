@@ -15,7 +15,7 @@ export interface MatchWebpackAssetsWithS3ObjectsOptions {
         readonly client: S3Client;
         readonly bucket: string;
         readonly prefix?: string | undefined;
-        readonly includeUnmatched: boolean;
+        readonly includeUnmatched?: boolean | undefined;
     };
 }
 
@@ -44,7 +44,7 @@ export function matchWebpackAssetsWithS3Objects(
         )
     );
 
-    if (options.s3.includeUnmatched) {
+    if (options.s3.includeUnmatched ?? false) {
         const unmatches = asyncExclude(
             listObjectsWithAttributes({
                 client: options.s3.client,
