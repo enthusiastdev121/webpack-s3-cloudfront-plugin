@@ -39,7 +39,7 @@
     "webpack": "^5.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.1.2",
+    "@commitlint/cli": "17.4.2",
     "@commitlint/config-conventional": "17.1.0",
     "@commitlint/cz-commitlint": "17.1.2",
     "@softwareventures/eslint-config": "7.0.1",
