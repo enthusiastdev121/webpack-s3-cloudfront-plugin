@@ -2011,10 +2011,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@softwareventures/chain@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@softwareventures/chain@npm:2.0.2"
-  checksum: 9ff45fbb6d15045f699c7cad209216a886b1ea972b96333bcb79134f7b184a3491631a4a36426679624098958689a883543bfa14b6bedf991b2bd2e27f4b8bdc
+"@softwareventures/chain@npm:^2.0.2 || ^3.0.0":
+  version: 3.0.0
+  resolution: "@softwareventures/chain@npm:3.0.0"
+  checksum: 0ff96bdec40e6f45cd54da93e6c5dc9659690932acc79d98290d3ce134b3a6e1a1586079b825a517c1f2f0d956a59a38b4868fe8885cda08a695c6e68ade0e38
   languageName: node
   linkType: hard
 
@@ -9303,7 +9303,7 @@ __metadata:
     "@commitlint/config-conventional": 17.1.0
     "@commitlint/cz-commitlint": 17.1.2
     "@softwareventures/async-iterable": ^1.2.0
-    "@softwareventures/chain": ^2.0.2
+    "@softwareventures/chain": ^2.0.2 || ^3.0.0
     "@softwareventures/eslint-config": 7.0.1
     "@softwareventures/iterable": ^3.2.0
     "@softwareventures/nullable": ^3.1.0
