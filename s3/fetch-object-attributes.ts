@@ -1,4 +1,3 @@
-import type {S3Client} from "@aws-sdk/client-s3";
 import {
     GetObjectAttributesCommand,
     ObjectAttributes as S3ObjectAttributes
@@ -9,12 +8,7 @@ import {notNull} from "@softwareventures/nullable";
 import type {NotFound} from "./not-found";
 import {sendCommand} from "./send-command";
 import {notFound} from "./not-found";
-
-export interface FetchObjectAttributesOptions {
-    readonly client: S3Client;
-    readonly bucket: string;
-    readonly key: string;
-}
+import type {FetchObjectOptions} from "./fetch-object";
 
 export interface ObjectAttributes {
     readonly type: "ObjectAttributes";
@@ -30,7 +24,7 @@ export interface FetchObjectAttributesError {
 }
 
 export async function fetchObjectAttributes(
-    options: FetchObjectAttributesOptions
+    options: FetchObjectOptions
 ): Promise<ObjectAttributes | NotFound | FetchObjectAttributesError> {
     return sendCommand({
         client: options.client,
