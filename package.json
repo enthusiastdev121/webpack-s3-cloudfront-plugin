@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "17.4.4",
-    "@commitlint/config-conventional": "17.4.3",
+    "@commitlint/config-conventional": "17.4.4",
     "@commitlint/cz-commitlint": "17.4.2",
     "@softwareventures/eslint-config": "7.1.0",
     "@softwareventures/precise-commits": "3.0.8",
