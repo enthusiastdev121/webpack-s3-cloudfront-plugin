@@ -1215,24 +1215,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cz-commitlint@npm:17.4.2":
-  version: 17.4.2
-  resolution: "@commitlint/cz-commitlint@npm:17.4.2"
+"@commitlint/cz-commitlint@npm:17.4.4":
+  version: 17.4.4
+  resolution: "@commitlint/cz-commitlint@npm:17.4.4"
   dependencies:
-    "@commitlint/ensure": ^17.4.0
-    "@commitlint/load": ^17.4.2
-    "@commitlint/types": ^17.4.0
+    "@commitlint/ensure": ^17.4.4
+    "@commitlint/load": ^17.4.4
+    "@commitlint/types": ^17.4.4
     chalk: ^4.1.0
     lodash.isplainobject: ^4.0.6
     word-wrap: ^1.2.3
   peerDependencies:
     commitizen: ^4.0.3
     inquirer: ^8.0.0
-  checksum: d5f818600a9ab0380fcf851b6a284c832bc180fc2d8840daaaae18e1b5429bc38f2590d5181a9a48c0da38e0fd631e84c801b754de957c087adb5caf586d75c4
+  checksum: 968a18456611f9af0e3ad9f79212196313c913d0cb8d3f3de35b7eea77cb2360978ccd5127abcd12a9da5b948bbf8f4b4ff9d0d23e87d1c13bb89b67a55ea2ff
   languageName: node
   linkType: hard
 
-"@commitlint/ensure@npm:^17.4.0, @commitlint/ensure@npm:^17.4.4":
+"@commitlint/ensure@npm:^17.4.4":
   version: 17.4.4
   resolution: "@commitlint/ensure@npm:17.4.4"
   dependencies:
@@ -1285,7 +1285,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/load@npm:>6.1.1, @commitlint/load@npm:^17.4.2, @commitlint/load@npm:^17.4.4":
+"@commitlint/load@npm:>6.1.1, @commitlint/load@npm:^17.4.4":
   version: 17.4.4
   resolution: "@commitlint/load@npm:17.4.4"
   dependencies:
@@ -1381,7 +1381,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/types@npm:^17.4.0, @commitlint/types@npm:^17.4.4":
+"@commitlint/types@npm:^17.4.4":
   version: 17.4.4
   resolution: "@commitlint/types@npm:17.4.4"
   dependencies:
@@ -9268,7 +9268,7 @@ __metadata:
     "@aws-sdk/client-s3": ^3.216.0
     "@commitlint/cli": 17.4.4
     "@commitlint/config-conventional": 17.4.4
-    "@commitlint/cz-commitlint": 17.4.2
+    "@commitlint/cz-commitlint": 17.4.4
     "@softwareventures/async-iterable": ^1.2.0
     "@softwareventures/chain": ^2.0.2 || ^3.0.0
     "@softwareventures/eslint-config": 7.1.0
